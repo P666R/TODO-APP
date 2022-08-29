@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="TODO APP for CodingNinja project" />
+    <meta name="author" content="PRoy" />
+    <title>TODO APP</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <section class="greeting">
+        <h2 class="title">What's Up, <input type="text" id="name" placeholder="Enter Username" spellcheck="false" autocomplete="off"></h2>
+    </section>
+
+    <header class="card">
+
+        <h1>TODO</h1>
+        <button id="theme-switcher">
+            <img src="./assets/images/icon-sun.svg" alt="Theme changer">
+        </button>
+
+    </header>
+
+    <main>
+        <div class="card add">
+
+            <div class="txt-container">
+                <label for="addt">Create Todo</label>
+                <input type="text" class="txt-input" placeholder="Create a new todo..." spellcheck="false"
+                    autocomplete="off" id="addt" />
+            </div>
+
+            <div class="cb-container">
+                <button id="add-btn">+</button>
+            </div>
+
+        </div>
+
+        <ul class="todos"></ul>
+
+        <div class="card stat">
+
+            <p class="corner"><span id="items-left">0</span> items left</p>
+
+            <div class="filter">
+                <button id="all" class="on">All</button>
+                <button id="active">Active</button>
+                <button id="completed">Completed</button>
+            </div>
+
+            <div class="corner">
+                <button id="clear-completed">Clear Completed</button>
+            </div>
+
+        </div>
+
+        <footer>
+            <p>Drag And Drop To Reorder List</p>
+        </footer>
+
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+<!-- li template (on checked) -->
+
+<!-- 
+
+    <li class="card checked" draggable="true">
+        <div class="cb-container">
+            <input class="cb-input" type="checkbox"><span class="check"></span>
+        </div>
+        <input class="item" readonly="true" type="text" value="Task 1">
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+    </li>
+
+ -->
