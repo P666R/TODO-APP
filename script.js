@@ -20,7 +20,6 @@ function main() {
 
     // username from user input
 
-    todos = JSON.parse(localStorage.getItem("todos")) || [];
     const nameInput = document.getElementById('name');
 
     const userName = localStorage.getItem("username") || '';
@@ -49,7 +48,7 @@ function main() {
                 isCompleted: false
             };
 
-            addTodo([currentTodo]); 
+            addTodo([currentTodo]);
 
             todos.push(currentTodo);
 
@@ -76,7 +75,7 @@ function main() {
         if (id) {
             document.querySelector('.on').classList.remove('on');
             document.getElementById(id).classList.add('on');
-            document.querySelector('.todos').className = `todos ${id}`; //using class name to clear existing classes while adding the new ones
+            document.querySelector('.todos').className = `todos ${id}`;
         }
     });
 
@@ -133,7 +132,7 @@ function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
     // create cards
 
     todos.forEach((todo) => {
-        // console.log(todo);
+
         const card = document.createElement("li");
         const cbContainer = document.createElement('div');
         const cbInput = document.createElement('input');
@@ -181,9 +180,9 @@ function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
 
         // set class and attributes on task completion
 
-        if (todos.isCompleted) {
-            card.classList.add('checked');
-            cbInput.setAttribute('checked', 'checked');
+        if (todo.isCompleted) {
+            card.classList.add("checked");
+            cbInput.setAttribute("checked", "checked");
         }
 
         // set dragstart and dragend listener to card
@@ -198,20 +197,21 @@ function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
 
         // set event listener for checkbox
 
-        cbInput.addEventListener('click', function () {
-            const correspondingCard = this.parentElement.parentElement; // getting the corresponding li element
-
+        cbInput.addEventListener("click", function () {
+            const correspondingCard = this.parentElement.parentElement;
             const checked = this.checked;
-
-            // calling stateTodo()
-
-            stateTodo([...document.querySelectorAll('.todos .card')].indexOf(correspondingCard), checked);
-
-            checked ? correspondingCard.classList.add('checked') : correspondingCard.classList.remove('checked');
-
-            // updating items left 
-
-            itemsLeft.textContent = document.querySelectorAll('.todos .card:not(.checked)').length;
+            stateTodo(
+                [...document.querySelectorAll(".todos .card")].indexOf(
+                    correspondingCard
+                ),
+                checked
+            );
+            checked
+                ? correspondingCard.classList.add("checked")
+                : correspondingCard.classList.remove("checked");
+            itemsLeft.textContent = document.querySelectorAll(
+                ".todos .card:not(.checked)"
+            ).length;
         });
 
         // set click event listener for delete button
@@ -249,7 +249,7 @@ function addTodo(todos = JSON.parse(localStorage.getItem("todos"))) {
             });
 
         });
-        
+
     });
 
     // updating items left
@@ -279,10 +279,8 @@ function removeManyTodo(indexes) {
 // stateTodo function to update todo of completion
 
 function stateTodo(index, completed) {
-    const todos = JSON.parse(localStorage.getItem("todos"))
+    const todos = JSON.parse(localStorage.getItem("todos"));
     todos[index].isCompleted = completed;
     localStorage.setItem("todos", JSON.stringify(todos));
 }
-
-
 
